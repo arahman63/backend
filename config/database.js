@@ -1,7 +1,7 @@
 /** @format */
 const Sequelize = require("sequelize");
 
-module.exports = new Sequelize("as3", "postgres", "rackman", {
+module.exports = new Sequelize("postgres", "postgres", "rackman", {
   host: "localhost",
   dialect: "postgres",
   operatorAliases: false,

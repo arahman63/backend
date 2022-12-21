@@ -6,6 +6,7 @@ const router = express.Router();
 const db = require("../config/database");
 const Tasks = require("../models/Tasks");
 
+//gets all tasks
 //reports to /tasks route
 router.get("/", (req, res) =>
   Tasks.findAll()

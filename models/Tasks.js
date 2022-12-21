@@ -16,7 +16,7 @@ const Task = db.define("tasks", {
     allowNull: false,
   },
   task_id: {
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
     allowNull: false,
     primaryKey: true,
   },

@@ -16,7 +16,7 @@ const Employee = db.define("employees", {
     allowNull: false,
   },
   id: {
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
     allowNull: false,
     primaryKey: true,
   },
