@@ -6,7 +6,7 @@ const router = express.Router();
 // const db = require("../config/database");
 // const Employee = require("../models/Employees");
 // const Employees = require("../models/Employees");
-const { Tasks, Employees } = require("../database/models");
+const { Task, Employee } = require("../database/models");
 
 const ash = require("express-async-handler");
 
