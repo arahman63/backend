@@ -1,24 +1,22 @@
 {
-  "name": "backend",
+  "name": "final-backend",
   "version": "1.0.0",
-  "description": "Backend to server employees and tasks ",
+  "description": "server for final crud project",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "author": "Arifur Rahman",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.1",
-    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
     "express-async-handler": "^1.2.0",
-    "express-handlebars": "^6.0.6",
+    "nodemon": "^2.0.16",
     "pg": "^8.8.0",
-    "pg-hstore": "^2.3.4",
-    "sequelize": "^6.26.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.20"
+    "pgtools": "^0.3.2",
+    "sequelize": "^6.19.0"
   }
 }

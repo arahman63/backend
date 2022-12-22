@@ -1,7 +1,10 @@
+Arifur Rahman
+Fatin Iftekhar
+Irteza Ali
 # backend
 
-#depdencies to install
-npm i express body-parser sequelize pg pg-hstore
+#dependencies to install
+npm i express body-parser sequelize pg pg-hstore pgtools
 npm i express-handlebars
 npm i -D nodemon 
 npm init
