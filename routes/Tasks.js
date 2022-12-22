@@ -2,19 +2,8 @@
 
 const express = require("express");
 const router = express.Router();
+const { Tasks, Employees } = require("../database/models");
 
-const db = require("../config/database");
-const Tasks = require("../models/Tasks");
-
-//gets all tasks
-//reports to /tasks route
-router.get("/", (req, res) =>
-  Tasks.findAll()
-    .then((tasks) => {
-      console.log(tasks);
-      res.sendStatus(200);
-    })
-    .catch((err) => console.log(err))
-);
+const ash = require("express-async-handler");
 
 module.exports = router;
