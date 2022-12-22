@@ -3,37 +3,67 @@
 const express = require("express");
 const router = express.Router();
 
-const db = require("../config/database");
-const Employee = require("../models/Employees");
-const Employees = require("../models/Employees");
+// const db = require("../config/database");
+// const Employee = require("../models/Employees");
+// const Employees = require("../models/Employees");
+const { Tasks, Employees } = require("../database/models");
+
+const ash = require("express-async-handler");
 
 //get all employees
 //reports to /employees route
-router.get("/", (req, res) =>
-  Employees.findAll()
-    .then((employees) => {
-      console.log(employees);
-      res.sendStatus(200);
-    })
-    .catch((err) => console.log(err))
+/** GET ALL EMPLOYEES */
+router.get(
+  "/",
+  ash(async (req, res) => {
+    let employees = await Employee.findAll({ include: [Task] });
+    res.status(200).json(employees);
+  })
 );
 
-router.get("/add", (req, res) => {
-  const data = {
-    first_name: "Nebby",
-    last_name: "Rah",
-    department: "Math",
-    id: 0,
-  };
-  let { first_name, last_name, department, id } = data;
-  //insert into table
-  Employee.create({
-    first_name,
-    last_name,
-    department,
-    id,
+/** GET EMPLOYEE BY ID*/
+router.get(
+  "/:id",
+  ash(async (req, res) => {
+    let employee = await Employee.findByPk(req.params.id, { include: [Task] });
+    res.status(200).json(employee);
   })
-    .then(employee =>res.redirect("/employees"))
-    .catch((err) => console.log(err));
-});
+);
+
+// Delete employee
+router.delete(
+  "/:id",
+  ash(async (req, res) => {
+    await Employee.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json("Employee deleted");
+  })
+);
+
+// Add new employee
+router.post(
+  "/",
+  ash(async (req, res) => {
+    let newEmployee = await Employee.create(req.body);
+    res.status(200).json(newEmployee);
+  })
+);
+
+// Edit employee
+router.put(
+  "/:id",
+  ash(async (req, res) => {
+    await Employee.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    let employee = await Employee.findByPk(req.params.id, { include: [Task] });
+    res.status(201).json(employee);
+  })
+);
+
 module.exports = router;
